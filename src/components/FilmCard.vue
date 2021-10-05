@@ -1,10 +1,10 @@
 <template>
     <ul>
-        <li v-if="movie.title.toLowerCase() != movie.original_title.toLowerCase()">
+        <li>
             Title: {{movie.title}}
         </li>
-        <li>
-            Original title{{movie.original_title}}
+        <li v-if="movie.title.toLowerCase() != movie.original_title.toLowerCase()">
+            Original title: {{movie.original_title}}
         </li>
         <li>
             Lang: {{movie.original_language}}
