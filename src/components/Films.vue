@@ -1,6 +1,6 @@
 <template>
     <div>
-        <FilmCard/>
+        <FilmCard v-for="(mv, index) in foundMovies" :key="index" :movie="mv"/>
     </div>
 </template>
 
@@ -13,18 +13,23 @@ export default {
     components: {
         FilmCard
     },
-    props: ['searchTitle'],
+    props: ['srcTitle'],
+    data() {
+        return {
+            foundMovies: []
+        }
+    },
     created() {
         axios
         .get('https://api.themoviedb.org/3/search/movie', {
             params: {
             api_key: 'c0af7194607876d6036970e4504abc6d',
-            query: 'Aldo, Giovanni e Giacomo',
+            query: 'ritorno al futuro',
             language: 'it-IT'
             }
         })
-        .then(function (response) {
-            console.log(response.data);
+        .then( (response) => {
+            this.foundMovies = response.data.results;
         });  
     }
 }
