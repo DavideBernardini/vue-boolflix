@@ -21,17 +21,22 @@ export default {
     },
     watch: {
         srcTitle: function() {
-        axios
-        .get('https://api.themoviedb.org/3/search/movie', {
-            params: {
-            api_key: 'c0af7194607876d6036970e4504abc6d',
-            query: this.srcTitle,
-            language: 'it-IT'
+            if (this.srcTitle != '') {
+                axios
+                .get('https://api.themoviedb.org/3/search/movie', {
+                    params: {
+                    api_key: 'c0af7194607876d6036970e4504abc6d',
+                    query: this.srcTitle,
+                    language: 'it-IT'
+                    }
+                })
+                .then( (response) => {
+                    this.foundMovies = response.data.results;
+                });
+            } else {
+                this.foundMovies = null;
             }
-        })
-        .then( (response) => {
-            this.foundMovies = response.data.results;
-        });  }
+        }
     }
 }
 </script>
