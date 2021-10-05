@@ -19,18 +19,19 @@ export default {
             foundMovies: []
         }
     },
-    created() {
+    watch: {
+        srcTitle: function() {
         axios
         .get('https://api.themoviedb.org/3/search/movie', {
             params: {
             api_key: 'c0af7194607876d6036970e4504abc6d',
-            query: 'ritorno al futuro',
+            query: this.srcTitle,
             language: 'it-IT'
             }
         })
         .then( (response) => {
             this.foundMovies = response.data.results;
-        });  
+        });  }
     }
 }
 </script>
