@@ -7,7 +7,7 @@
             Original title: {{movie.original_title}}
         </li>
         <li>
-            Lang: {{movie.original_language}}
+            <lang-flag :iso="`${movie.original_language}`"/>
         </li>
         <li>
             Vote: {{movie.vote_average}}
@@ -16,9 +16,13 @@
 </template>
 
 <script>
+import LangFlag from 'vue-lang-code-flags'
 
 export default {
     name: 'FilmCard',
+    components: {
+        LangFlag
+    },
     props: ['movie']
 }
 </script>
