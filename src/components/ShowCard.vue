@@ -8,10 +8,17 @@
         </li>
         <li>
             <span>Lang:  </span>  
-            <lang-flag :iso="`${show.original_language}`" :class="{unaviable_flag : aviableFlags.includes(this.show.original_language) == false}"/>
+            <lang-flag 
+            :iso="`${show.original_language}`" 
+            :class="{unaviable_flag : aviableFlags.includes(this.show.original_language) == false}"/>
         </li>
         <li>
-            Vote: {{show.vote_average}}
+            <i class="fas fa-star" 
+            v-for="(n, index) in rating" 
+            :key="index"></i>
+            <i class="far fa-star" 
+            v-for="(n, index) in (5 - rating)" 
+            :key="index"></i>
         </li>
     </ul>
 </template>
@@ -20,7 +27,7 @@
 import LangFlag from 'vue-lang-code-flags'
 
 export default {
-    name: 'FilmCard',
+    name: 'ShowCard',
     components: {
         LangFlag
     },
@@ -54,19 +61,32 @@ export default {
                 'th',
                 ]
         }
+    },
+    computed: {
+        rating() {
+            return Math.ceil(this.show.vote_average / 2);
+        }
     }
 }
 </script>
 
 <style scoped lang="scss">
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css';
+
 ul {
     display: inline-block;
     span {
         vertical-align: middle;
+        background-size: cover !important;
+        width: 20px !important;
     }
     .unaviable_flag {
         background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/35/Orange_question_mark.svg) !important;
-}
+        width: 16px !important;
+    }
+    i {
+        color: rgb(245, 210, 10);
+    }
 }
 
 </style>

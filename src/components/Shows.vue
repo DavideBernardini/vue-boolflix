@@ -1,7 +1,8 @@
 <template>
     <div>
         <h2 v-if="foundShows.length > 0">Serie TV</h2>
-        <ShowCard v-for="(sh, index) in foundShows" :key="index" :show="sh"/>
+        <ShowCard v-for="(sh, index) in foundShows" 
+        :key="index" :show="sh"/>
     </div>
 </template>
 
@@ -10,7 +11,7 @@ import ShowCard from '../components/ShowCard';
 import axios from 'axios';
 
 export default {
-    name: 'Films',
+    name: 'Shows',
     components: {
         ShowCard
     },

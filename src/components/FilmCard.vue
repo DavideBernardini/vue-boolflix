@@ -8,10 +8,17 @@
         </li>
         <li>
             <span>Lang:  </span>  
-            <lang-flag :iso="`${movie.original_language}`" :class="{unaviable_flag : aviableFlags.includes(this.movie.original_language) == false}"/>
+            <lang-flag 
+            :iso="`${movie.original_language}`" 
+            :class="{unaviable_flag : aviableFlags.includes(this.movie.original_language) == false}"/>
         </li>
         <li>
-            Vote: {{movie.vote_average}}
+            <i class="fas fa-star" 
+            v-for="(n, index) in rating" 
+            :key="index"></i>
+            <i class="far fa-star" 
+            v-for="(n, index) in (5 - rating)" 
+            :key="index"></i>
         </li>
     </ul>
 </template>
@@ -54,6 +61,11 @@ export default {
                 'th',
                 ]
         }
+    },
+    computed: {
+        rating() {
+            return Math.ceil(this.movie.vote_average / 2);
+        }
     }
 }
 </script>
@@ -63,10 +75,16 @@ ul {
     display: inline-block;
     span {
         vertical-align: middle;
+        background-size: cover !important;
+        width: 20px !important;
     }
     .unaviable_flag {
         background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/35/Orange_question_mark.svg) !important;
-}
+        width: 16px !important;
+    }
+    i {
+        color: rgb(245, 210, 10);
+    }
 }
 
 </style>
