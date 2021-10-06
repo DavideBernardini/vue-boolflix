@@ -7,7 +7,7 @@
             Original title: {{movie.original_title}}
         </li>
         <li>
-            <lang-flag :iso="`${movie.original_language}`"/>
+            <span>Lang:</span>  <lang-flag :iso="`${movie.original_language}`" :class="{unaviable_flag : aviableFlags.includes(this.movie.original_language) == false}"/>
         </li>
         <li>
             Vote: {{movie.vote_average}}
@@ -23,10 +23,45 @@ export default {
     components: {
         LangFlag
     },
-    props: ['movie']
+    props: ['movie'],
+    data() {
+        return {
+            aviableFlags: [
+                'en',
+                'zh',
+                'hi',
+                'es',
+                'ar',
+                'fr',
+                'ms',
+                'ru',
+                'bn',
+                'pt',
+                'de',
+                'ja',
+                'fa',
+                'sw',
+                'jv',
+                'te',
+                'tr',
+                'ko',
+                'mr',
+                'ta',
+                'vi',
+                'it',
+                'ha',
+                'th',
+                ]
+        }
+    }
 }
 </script>
 
 <style scoped lang="scss">
-
+span {
+    vertical-align: middle;
+}
+.unaviable_flag {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/3/35/Orange_question_mark.svg) !important;
+}
 </style>
