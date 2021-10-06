@@ -1,17 +1,17 @@
 <template>
     <ul>
         <li>
-            Title: {{movie.title}}
+            Title: {{show.name}}
         </li>
-        <li v-if="movie.title.toLowerCase() != movie.original_title.toLowerCase()">
-            Original title: {{movie.original_title}}
+        <li v-if="show.name.toLowerCase() != show.original_name.toLowerCase()">
+            Original name: {{show.original_name}}
         </li>
         <li>
             <span>Lang:  </span>  
-            <lang-flag :iso="`${movie.original_language}`" :class="{unaviable_flag : aviableFlags.includes(this.movie.original_language) == false}"/>
+            <lang-flag :iso="`${show.original_language}`" :class="{unaviable_flag : aviableFlags.includes(this.show.original_language) == false}"/>
         </li>
         <li>
-            Vote: {{movie.vote_average}}
+            Vote: {{show.vote_average}}
         </li>
     </ul>
 </template>
@@ -24,7 +24,7 @@ export default {
     components: {
         LangFlag
     },
-    props: ['movie'],
+    props: ['show'],
     data() {
         return {
             aviableFlags: [
