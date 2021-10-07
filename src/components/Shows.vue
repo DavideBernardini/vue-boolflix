@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid overflow-hidden"
     v-if="foundShows != null">
-        <h2 v-if="foundShows.length > 0">Serie TV</h2>
+        <h3 class="pt-4" v-if="foundShows.length > 0">Serie TV</h3>
         <div class="row row-cols-autorow row-cols-5 flex-nowrap overflow-auto">
             <ShowCard class="col mb-3 ms-3"
             v-for="(sh, index) in foundShows" 
@@ -50,5 +50,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../assets/style/variables.scss';
 
+h3 {
+    color: $secondaryText;
+}
+.row > * {
+    padding: 0;
+}
 </style>

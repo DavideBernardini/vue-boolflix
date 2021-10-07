@@ -1,13 +1,12 @@
 <template>
     <div class="container-fluid overflow-hidden"
     v-if="foundMovies != null">
-        <h2 h2 v-if="foundMovies.length > 0">Film</h2>
+        <h3 class="pt-4" v-if="foundMovies.length > 0">Film</h3>
         <div class="row row-cols-5 flex-nowrap overflow-auto">
             <FilmCard class="col mb-3 ms-3" 
             v-for="(mv, index) in foundMovies" 
             :key="index" :movie="mv"/>
         </div>
-        
     </div>
 </template>
 
@@ -49,5 +48,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../assets/style/variables.scss';
+
+h3 {
+    color: $secondaryText;
+}
+.row > * {
+    padding: 0;
+}
 
 </style>

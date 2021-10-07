@@ -1,5 +1,12 @@
 // bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// google font
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+// variables
+@import './assets/style/variables.scss';
+
 // reset
 * {
     margin: 0;
@@ -7,7 +14,10 @@
     box-sizing: border-box;
 }
 
+// body
 body {
     color: #fff;
-    background-color: #000;
+    background-color: $mainColor;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
 }
