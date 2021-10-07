@@ -1,9 +1,13 @@
 <template>
-    <div v-if="foundMovies != null">
-        <h2>Film</h2>
-        <FilmCard 
-        v-for="(mv, index) in foundMovies" 
-        :key="index" :movie="mv"/>
+    <div class="container-fluid overflow-hidden"
+    v-if="foundMovies != null">
+        <h2 h2 v-if="foundMovies.length > 0">Film</h2>
+        <div class="row row-cols-5 flex-nowrap overflow-auto">
+            <FilmCard class="col mb-3 ms-3" 
+            v-for="(mv, index) in foundMovies" 
+            :key="index" :movie="mv"/>
+        </div>
+        
     </div>
 </template>
 
@@ -14,7 +18,7 @@ import axios from 'axios';
 export default {
     name: 'Films',
     components: {
-        FilmCard
+        FilmCard,
     },
     props: ['srcTitle'],
     data() {

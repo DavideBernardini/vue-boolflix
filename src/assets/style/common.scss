@@ -1,6 +1,13 @@
+// bootstrap
+@import '~bootstrap/scss/bootstrap';
 // reset
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
+    color: #fff;
+    background-color: #000;
 }

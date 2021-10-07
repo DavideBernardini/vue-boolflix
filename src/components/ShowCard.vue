@@ -1,27 +1,26 @@
 <template>
-    <ul>
-        <img :src="`https://image.tmdb.org/t/p/w300${show.poster_path}`" :alt="`${show.title} poster`">
-        <li>
+    <div class="card" :style="replacePath()">
+        <h2>
             Title: {{show.name}}
-        </li>
-        <li v-if="show.name.toLowerCase() != show.original_name.toLowerCase()">
+        </h2>
+        <h3 v-if="show.name.toLowerCase() != show.original_name.toLowerCase()">
             Original name: {{show.original_name}}
-        </li>
-        <li>
+        </h3>
+        <div>
             <span>Lang:  </span>  
             <lang-flag 
             :iso="`${show.original_language}`" 
             :class="{unaviable_flag : aviableFlags.includes(this.show.original_language) == false}"/>
-        </li>
-        <li>
+        </div>
+        <div>
             <i class="fas fa-star" 
             v-for="(n, index) in rating" 
             :key="index"></i>
             <i class="far fa-star" 
             v-for="(n, index) in (5 - rating)" 
             :key="index + 'empty'"></i>
-        </li>
-    </ul>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -67,14 +66,27 @@ export default {
         rating() {
             return Math.ceil(this.show.vote_average / 2);
         }
+    },
+    methods: {
+        replacePath() {
+            if (this.show.poster_path == null) {
+                return 'background-image: url(https://i.pinimg.com/originals/eb/aa/44/ebaa441df578a3e48e26ef1a15a04e3c.jpg)'
+            } else {
+                return `background-image: url(https://image.tmdb.org/t/p/original${this.show.poster_path})`;
+            }
+        }
     }
 }
 </script>
 
 <style scoped lang="scss">
 
-ul {
+.card {
     display: inline-block;
+    width: 18.75rem;
+    height: 28.125rem;
+    background-size: cover;
+    background-position: center;
     span {
         vertical-align: middle;
         background-size: cover !important;

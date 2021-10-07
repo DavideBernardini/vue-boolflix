@@ -1,8 +1,14 @@
 <template>
-    <div v-if="foundShows != null">
+    <div class="container-fluid overflow-hidden"
+    v-if="foundShows != null">
         <h2 v-if="foundShows.length > 0">Serie TV</h2>
-        <ShowCard v-for="(sh, index) in foundShows" 
-        :key="index" :show="sh"/>
+        <div class="row row-cols-autorow row-cols-5 flex-nowrap overflow-auto">
+            <ShowCard class="col mb-3 ms-3"
+            v-for="(sh, index) in foundShows" 
+            :key="index" 
+            :show="sh"/>
+        </div>
+        
     </div>
 </template>
 
