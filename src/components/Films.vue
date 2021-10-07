@@ -1,7 +1,8 @@
 <template>
-    <div>
-        <h2 v-if="foundMovies.length > 0">Film</h2>
-        <FilmCard v-for="(mv, index) in foundMovies" 
+    <div v-if="foundMovies != null">
+        <h2>Film</h2>
+        <FilmCard 
+        v-for="(mv, index) in foundMovies" 
         :key="index" :movie="mv"/>
     </div>
 </template>

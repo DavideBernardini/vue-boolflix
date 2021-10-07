@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-if="foundShows != null">
         <h2 v-if="foundShows.length > 0">Serie TV</h2>
         <ShowCard v-for="(sh, index) in foundShows" 
         :key="index" :show="sh"/>

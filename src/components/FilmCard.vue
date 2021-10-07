@@ -1,5 +1,6 @@
 <template>
     <ul>
+        <img :src="`https://image.tmdb.org/t/p/w300${movie.poster_path}`" :alt="`${movie.title} poster`">
         <li>
             Title: {{movie.title}}
         </li>
@@ -18,7 +19,7 @@
             :key="index"></i>
             <i class="far fa-star" 
             v-for="(n, index) in (5 - rating)" 
-            :key="index"></i>
+            :key="index + 'empty'"></i>
         </li>
     </ul>
 </template>
@@ -86,5 +87,4 @@ ul {
         color: rgb(245, 210, 10);
     }
 }
-
 </style>

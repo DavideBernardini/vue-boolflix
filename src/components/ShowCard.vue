@@ -1,5 +1,6 @@
 <template>
     <ul>
+        <img :src="`https://image.tmdb.org/t/p/w300${show.poster_path}`" :alt="`${show.title} poster`">
         <li>
             Title: {{show.name}}
         </li>
@@ -18,7 +19,7 @@
             :key="index"></i>
             <i class="far fa-star" 
             v-for="(n, index) in (5 - rating)" 
-            :key="index"></i>
+            :key="index + 'empty'"></i>
         </li>
     </ul>
 </template>
@@ -71,7 +72,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css';
 
 ul {
     display: inline-block;
