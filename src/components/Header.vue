@@ -7,7 +7,7 @@
                     v-if="show"
                     v-model="searchTitle" @keyup="$emit('search', searchTitle)">
                 </transition>
-                <button v-on:click="show = !show">
+                <button @click="show = !show">
                     <i class="fas fa-search ms-2"></i>
                 </button>
             </div>
