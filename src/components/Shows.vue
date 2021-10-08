@@ -3,7 +3,8 @@
     v-if="foundShows != null">
         <h3 class="pt-4" v-if="foundShows.length > 0">Serie TV</h3>
         <vue-horizontal>
-            <template v-slot:btn-next>
+            <template v-if="foundShows.length > 3" 
+                v-slot:btn-next>
                     <div class="replaced-btn right">
                         <div><i class="fas fa-angle-right"></i></div>
                     </div>

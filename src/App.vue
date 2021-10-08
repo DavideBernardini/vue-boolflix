@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      titleSearch: ''
+      titleSearch: '',
     }
     },
     methods: {
@@ -34,4 +34,6 @@ export default {
 <style lang="scss">
 @import '~@fortawesome/fontawesome-free/css/all.css';
 @import './assets/style/common.scss';
+@import './assets/style/variables.scss';
+
 </style>

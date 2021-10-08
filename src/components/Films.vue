@@ -3,7 +3,8 @@
     v-if="foundMovies != null">
         <h3 class="pt-4" v-if="foundMovies.length > 0">Film</h3>
             <vue-horizontal>
-                <template v-slot:btn-next>
+                <template v-if="foundMovies.length > 3"
+                    v-slot:btn-next>
                     <div class="replaced-btn right">
                         <div><i class="fas fa-angle-right"></i></div>
                     </div>
@@ -66,7 +67,6 @@ export default {
 h3 {
     color: $secondaryText;
 }
-
 .replaced-btn {
     height: 100%;
     display: flex;
@@ -80,8 +80,6 @@ h3 {
     background: linear-gradient(to right, #ffffff00, black);
     transform: translateX(-50%);
 }
-
-
 .replaced-btn > div {
     font-size: 50px;
     line-height: 1;
