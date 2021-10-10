@@ -1,16 +1,28 @@
 <template>
     <div class="container-fluid overflow-hidden"
     v-if="foundShows != null">
-        <h3 class="pt-4" v-if="foundShows.length > 0">Serie TV</h3>
+        <h3 class="pt-4" 
+        v-if="foundShows.length > 0">
+            Serie TV
+            <span v-if="foundShows == trends">
+                - Trend della settimana
+            </span>
+        </h3>
+        <h2 class="my-5"
+        v-else>
+            Nessuna serie trovata
+        </h2>
         <vue-horizontal>
             <template v-if="foundShows.length > 3" 
                 v-slot:btn-next>
-                    <div class="replaced-btn right">
+                    <div class="replaced-btn right"
+                    v-if="foundShows.length > 0">
                         <div><i class="fas fa-angle-right"></i></div>
                     </div>
                     </template>
                     <template v-slot:btn-prev>
-                    <div class="replaced-btn left">
+                    <div class="replaced-btn left"
+                    v-if="foundShows.length > 0">
                         <div><i class="fas fa-angle-left"></i></div>
                     </div>
                 </template>
@@ -37,8 +49,25 @@ export default {
     props: ['srcTitle'],
     data() {
         return {
-            foundShows: []
+            foundShows: [],
+            trends: []
         }
+    },
+    created(){
+    axios
+        .get("https://api.themoviedb.org/3/trending/tv/week",{
+            params:{
+                api_key: 'c0af7194607876d6036970e4504abc6d',
+                language: 'it-IT'
+            }
+        }
+        )
+        .then(
+            (resp)=>{
+                    this.foundShows = resp.data.results;
+                    this.trends = resp.data.results;
+                }
+        )
     },
     watch: {
         srcTitle: function() {
@@ -53,9 +82,10 @@ export default {
                 })
                 .then( (response) => {
                     this.foundShows = response.data.results;
+                    this.trends = response.data.results;
                 });
             } else {
-                this.foundShows = null;
+                this.foundShows = this.trends;
             }
         }
     }
@@ -67,6 +97,13 @@ export default {
 
 h3 {
     color: $secondaryText;
+    span {
+        font-size: 1.5rem;
+    }
+}
+h2 {
+    color: $secondaryText;
+    display: inline-block;
 }
 .replaced-btn {
     height: 100%;
@@ -81,8 +118,6 @@ h3 {
     background: linear-gradient(to right, #ffffff00, black);
     transform: translateX(-50%);
 }
-
-
 .replaced-btn > div {
     font-size: 50px;
     line-height: 1;
