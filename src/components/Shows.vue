@@ -82,7 +82,6 @@ export default {
                 })
                 .then( (response) => {
                     this.foundShows = response.data.results;
-                    this.trends = response.data.results;
                 });
             } else {
                 this.foundShows = this.trends;

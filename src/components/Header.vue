@@ -3,7 +3,7 @@
             <img src="../assets/images/netflix-logo.png" alt="" class="logo">
             <div class="search d-flex">
                 <transition name="fade">
-                    <input type="text" class="form-control"
+                    <input type="text" class="form-control" placeholder="Cerca film o serie tv"
                     v-if="show"
                     v-model="searchTitle" @keyup="$emit('search', searchTitle)">
                 </transition>

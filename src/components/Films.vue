@@ -80,7 +80,6 @@ export default {
                 })
                 .then( (response) => {
                     this.foundMovies = response.data.results;
-                    this.trends = response.data.results;
                 });
             } else {
                 this.foundMovies = this.trends;
